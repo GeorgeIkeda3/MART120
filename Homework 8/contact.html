@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <script>
+            function validate()
+            {
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                if(name == "")
+                {
+                    document.getElementById("name").style.backgroundColor = "red";
+                    document.getElementById("name").focus();
+                }
+                if(email == "")
+                {
+                    document.getElementById("email").style.backgroundColor = "red";
+                    document.getElementById("email").focus();
+                }
+                if(document.info.terms.checked == false)
+                {
+                    alert("Please accept Terms of Agreement");
+                }
+            }
+        </script>
+    </head>
+
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="story.html">Story</a>
+        <a href="game.html">Game</a>
+        <a class="active" href="contact.html">Contact</a>
+    </div>
+
+    <body>
+        <header>
+            <h1>Contact Me</h1>
+        </header>
+        <hr>
+
+        <form name="info" action="">
+            <p>Name: <input type="text" id="name" required></p>
+            <p>Email: <input type="text" id="email" required></p>
+            <p>Accept Terms of Agreement: <input type="checkbox" id="terms"></p>
+            <button type="submit" onclick="validate()">Submit</button>
+        </form>
+        
+    </body>
+</html>

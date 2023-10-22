@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+    <title>for Loops</title>
+
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="story.html">Story</a>
+        <a href="game.html">Game</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            var actualAnswer;
+            var number1;
+            var number2;
+            var correct = 0;
+            var incorrect = 0;
+            var count = 1;
+            var percentage = 0;
+
+            function printQuestion() {
+                number1 = Math.floor(Math.random() * 10);
+                number2 = Math.floor(Math.random() * 10);
+                actualAnswer = number1 + number2;
+                document.getElementById("theQuestion").innerHTML = "What is " + number1 + "+" + number2 + "?";
+            }
+
+            function checkAnswer() {
+                var answer = document.getElementById("txtAnswer").value;
+                if(answer == actualAnswer) {
+                    correct +=1;
+                    percentage = correct / (correct + incorrect) * 100;
+                    document.getElementById("finalResult").innerHTML = "Good job!</br>" + "Number Correct: " + 
+                    correct + "</br>Number Incorrect: " + incorrect + "</br>Percentage: " + percentage + "%";
+                    printQuestion();
+                } else {
+                    incorrect += 1;
+                    percentage = correct / (correct + incorrect) * 100;
+                    document.getElementById("finalResult").innerHTML = "Try Again!</br>" + "Number Correct: " + 
+                    correct + "</br>Number Incorrect: " + incorrect + "</br>Percentage: " + percentage + "%";
+                    printQuestion();
+                }
+                count += 1;
+                document.getElementById("txtAnswer").value='';
+                }
+
+            function runGame() {
+                for (var i = 1; i < 6; i++) {
+                    document.getElementById("message").innerHTML += "<h" + i + ">Welcome to our game!!!</h" + i + "></p>";
+                }
+                printQuestion();
+            }
+            runGame();
+        </script>
+    </head>
+
+    <body onload="runGame();">
+    
+        <table>
+            <tr>
+                <td colspan="2">
+                    <div id="message"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr size="1">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="theQuestion"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Your answer</td>
+                <td><input type="text" id="txtAnswer"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button id="btnSubmit" onClick="checkAnswer();">Submit</button></td>
+            </tr>
+        </table>
+        <div id="finalResult"></div>
+    </body>
+
+</html>
